@@ -1,0 +1,64 @@
+{
+	"name": "surrealwebs/basic-composer",
+	"type": "wordpress-plugin",
+	"description": "Basic composer setup for project.",
+	"license": "GPL-2.0-or-later",
+	"keywords": [
+		"WordPress",
+		"Plugins"
+	],
+	"minimum-stability": "dev",
+	"prefer-stable": true,
+	"config": {
+		"autoloader-suffix": "Surrealwebs_Basic_Composer",
+		"process-timeout": 600,
+		"preferred-install": "dist",
+		"platform": {
+			"php": "8.2"
+		},
+		"sort-packages": true,
+		"allow-plugins": {
+			"composer/installers": true,
+			"dealerdirect/phpcodesniffer-composer-installer": true,
+			"roots/wordpress-core-installer": true
+		}
+	},
+	"autoload": {
+		"classmap": [
+			"src/"
+		]
+	},
+	"require": {
+		"php": ">=8.2",
+		"composer/installers": "^1|^2.2",
+		"psr/container": "^2.0",
+		"wp-cli/wp-cli-bundle": "^2.10"
+	},
+	"require-dev": {
+		"automattic/vipwpcs": "^3.0.0",
+		"dealerdirect/phpcodesniffer-composer-installer": "^1.0.0",
+		"phpcompatibility/php-compatibility": "dev-develop as 9.99.99",
+		"phpcompatibility/phpcompatibility-wp": "2.1.4",
+		"phpunit/phpunit": "^9.6",
+		"roots/wordpress": "^6.5",
+		"szepeviktor/phpstan-wordpress": "^1.3",
+		"wp-cli/php-cli-tools": "^0.11",
+		"yoast/phpunit-polyfills": "^2.0"
+	},
+	"scripts": {
+		"lint": [
+			"@lint:plugin",
+			"@lint:phpstan"
+		],
+		"lint:plugin": "phpcs --standard=phpcs.xml",
+		"lint:phpstan": "phpstan analyse -vvv",
+		"lint-fix": "phpcbf --standard=phpcs.xml",
+		"test": "vendor/bin/phpunit --configuration=phpunit.xml",
+		"release": [
+			"composer install --no-dev --prefer-dist --optimize-autoloader"
+		]
+	},
+	"extra": {
+		"wordpress-install-dir": "tests/wordpress"
+	}
+}

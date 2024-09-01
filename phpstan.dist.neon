@@ -1,0 +1,13 @@
+includes:
+	- vendor/szepeviktor/phpstan-wordpress/extension.neon
+
+parameters:
+	level: 2
+	tmpDir: phpstan/phpstan-cache
+	bootstrapFiles:
+		- phpstan/wordpress-globals-stubs.php
+	paths:
+		- src
+	excludePaths:
+		- tests
+		- vendor
