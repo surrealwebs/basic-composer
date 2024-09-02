@@ -14,8 +14,33 @@
 
 namespace Surrealwebs\BasicComposer;
 
-if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
-	require_once __DIR__ . '/vendor/autoload.php';
-} else {
-	die( 'Please run composer install in the plugin directory.' );
+use Surrealwebs\BasicComposer\Framework\Autoload;
+use Surrealwebs\BasicComposer\Framework\Plugin;
+
+require_once __DIR__ . '/src/app/framework/class-autoload.php';
+
+$autoload = new Autoload();
+$autoload->add( __NAMESPACE__, sprintf( '%s/src/app', __DIR__ ) );
+
+/**
+ * Get an instance of the plugin object. Instantiate it if it doesn't exist.
+ *
+ * @return Plugin
+ */
+function get_plugin_instance(): Plugin {
+	static $basic_composer_plugin;
+
+	if ( is_null( $basic_composer_plugin ) ) {
+		$basic_composer_plugin = new Plugin( __FILE__ );
+		$basic_composer_plugin->init();
+	}
+
+	return $basic_composer_plugin;
 }
+
+// Start the plugin.
+\add_action(
+	'after_setup_theme',
+	__NAMESPACE__ . '\\get_plugin_instance',
+	PHP_INT_MAX
+);
