@@ -10,6 +10,8 @@
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain: basic-composer
  * Domain Path: /languages
+ *
+ * @package Surrealwebs\BasicComposer
  */
 
 namespace Surrealwebs\BasicComposer;

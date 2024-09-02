@@ -29,13 +29,13 @@ class Autoload {
 	/**
 	 * Add mapping for a directory to a namespace.
 	 *
-	 * @param string $namespace Namespace.
-	 * @param string $dir       Absolute path to the directory.
+	 * @param string $plugin_namespace Namespace.
+	 * @param string $dir              Absolute path to the directory.
 	 *
 	 * @return void
 	 */
-	public function add( string $namespace, string $dir ): void {
-		$this->namespace_dir_map[ trim( $namespace, '/\\' ) ] = rtrim( $dir, '/\\' );
+	public function add( string $plugin_namespace, string $dir ): void {
+		$this->namespace_dir_map[ trim( $plugin_namespace, '/\\' ) ] = rtrim( $dir, '/\\' );
 
 		krsort( $this->namespace_dir_map ); // Ensure the sub-namespaces are matched first.
 	}
@@ -44,10 +44,8 @@ class Autoload {
 	 * Autoload the registered classes.
 	 *
 	 * @param string $class_name Fully qualified class name.
-	 *
-	 * @return void
 	 */
-	public function autoload( string $class_name ): void {
+	public function autoload( string $class_name ) {
 		$paths = $this->resolve( $class_name );
 
 		foreach ( $paths as $path ) {
@@ -86,7 +84,7 @@ class Autoload {
 				);
 
 				return array_map(
-					function( $prefix ) use ( $file_path_template ) {
+					function ( $prefix ) use ( $file_path_template ) {
 						return str_replace( '{prefix}', $prefix, $file_path_template );
 					},
 					$prefixes
@@ -144,11 +142,11 @@ class Autoload {
 	/**
 	 * Sanitize class name to filename according to WP coding standards.
 	 *
-	 * @param string $class Class name.
+	 * @param string $class_name Class name.
 	 *
 	 * @return string Filename of the class.
 	 */
-	protected function class_to_file_name( string $class ): string {
-		return strtolower( str_replace( '_', '-', $class ) );
+	protected function class_to_file_name( string $class_name ): string {
+		return strtolower( str_replace( '_', '-', $class_name ) );
 	}
 }

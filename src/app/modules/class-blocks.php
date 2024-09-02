@@ -248,7 +248,7 @@ class Blocks implements Initable {
 	 * @uses get_option() To load values from settings.
 	 * @uses wp_create_nonce() To create a nonce.
 	 *
-	 * @throws RuntimeException|Exception Throws if problem loading.
+	 * @throws RuntimeException Throws if problem loading.
 	 */
 	public function action_enqueue_blocks_scripts(): void {
 		global $pagenow;
@@ -287,7 +287,7 @@ class Blocks implements Initable {
 			[
 				// TODO:: remove this one after WordPress upgraded to 6.1, These configs will be available through @wordpress/date/getSettings.
 				'dateTimeConfig' => [
-					'formats'  => array(
+					'formats'  => [
 						/* translators: Time format, see https://www.php.net/manual/datetime.format.php */
 						'time'                => \get_option( 'time_format', 'g:i a' ),
 						/* translators: Date format, see https://www.php.net/manual/datetime.format.php */
@@ -296,12 +296,12 @@ class Blocks implements Initable {
 						'datetime'            => 'F j, Y g:i a',
 						/* translators: Abbreviated date/time format, see https://www.php.net/manual/datetime.format.php */
 						'datetimeAbbreviated' => 'M j, Y g:i a',
-					),
-					'timezone' => array(
+					],
+					'timezone' => [
 						'offset' => \get_option( 'gmt_offset', 0 ),
 						'string' => $timezone_string,
 						'abbr'   => $timezone_abbr,
-					),
+					],
 				],
 				'restNonce'      => \wp_create_nonce( 'wp_rest' ),
 			]
@@ -321,12 +321,12 @@ class Blocks implements Initable {
 	public function action_add_block_category( array $block_categories, \WP_Block_Editor_Context $block_editor_context ): array {
 		return array_merge(
 			$block_categories,
-			array(
-				array(
+			[
+				[
 					'slug'  => 'surrealwebs-composer-blocks',
 					'title' => __( 'Surrealwebs Basic Composer blocks', 'basic-composer' ),
-				),
-			)
+				],
+			]
 		);
 	}
 

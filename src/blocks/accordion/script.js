@@ -5,6 +5,9 @@
 
 /* global jQuery */
 
+/**
+ * Internal dependencies
+ */
 import './style.scss';
 
 const main = async () => {

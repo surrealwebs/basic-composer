@@ -1,8 +1,12 @@
 /**
+ * External dependencies
+ */
+import classnames from 'classnames';
+
+/**
  * WordPress dependencies
  */
 import { useBlockProps, InnerBlocks, RichText } from '@wordpress/block-editor';
-import classnames from 'classnames';
 
 /**
  * The save function defines the way in which the different attributes should

@@ -1,7 +1,6 @@
 /**
  * WordPress dependencies
  */
-
 import { __ } from '@wordpress/i18n';
 import { useSelect, useDispatch } from '@wordpress/data';
 import {
@@ -49,7 +48,7 @@ export default function Edit( props ) {
 	// This is used to identify the first item to be opened on page load.
 	useEffect( () => {
 		setAttributes( { id: itemIndex } );
-	}, [ itemIndex ] );
+	}, [ itemIndex, setAttributes ] );
 
 	const propsObject = {};
 	if ( isActive ) {

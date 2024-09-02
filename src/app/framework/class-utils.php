@@ -50,6 +50,8 @@ class Utils {
 	 * This method does not check a specific type of inheritance, so it can be
 	 * used to check if an interface is implemented or a class is extended.
 	 *
+	 * @uses esc_html() For escaping the exception message.
+	 *
 	 * @throws RuntimeException Throws exception if condition passes.
 	 *
 	 * @param string|object $class_being_checked Class being checked.
@@ -61,20 +63,24 @@ class Utils {
 		$exception_template = '%s must implement or extend %s';
 		if ( is_object( $class_being_checked ) && ! ( $class_being_checked instanceof $target_object_name ) ) {
 			throw new RuntimeException(
-				sprintf(
-					$exception_template,
-					get_class( $class_being_checked ),
-					$target_object_name
+				\esc_html(
+					sprintf(
+						$exception_template,
+						get_class( $class_being_checked ),
+						$target_object_name
+					)
 				)
 			);
 		}
 
 		if ( ! is_a( $class_being_checked, $target_object_name, true ) ) {
 			throw new RuntimeException(
-				sprintf(
-					$exception_template,
-					$class_being_checked,
-					$target_object_name
+				\esc_html(
+					sprintf(
+						$exception_template,
+						$class_being_checked,
+						$target_object_name
+					)
 				)
 			);
 		}

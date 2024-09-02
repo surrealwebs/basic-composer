@@ -1,0 +1,7 @@
+{
+	"core": "./tools/wordpress",
+	"plugins": [
+		".",
+		"https://downloads.wordpress.org/plugin/query-monitor.3.9.0.zip"
+	]
+}

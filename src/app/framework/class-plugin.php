@@ -30,8 +30,8 @@ class Plugin extends Plugin_Base {
 	 * @return Module[]
 	 */
 	private function get_modules() {
-		return array(
+		return [
 			new Module( Blocks::class ),
-		);
+		];
 	}
 }

@@ -50,9 +50,9 @@
 			"@lint:plugin",
 			"@lint:phpstan"
 		],
-		"lint:plugin": "phpcs --standard=phpcs.xml",
+		"lint:plugin": "phpcs --standard=phpcs.xml.dist",
 		"lint:phpstan": "phpstan analyse -vvv",
-		"lint-fix": "phpcbf --standard=phpcs.xml",
+		"lint-fix": "phpcbf --standard=phpcs.xml.dist",
 		"test": "vendor/bin/phpunit --configuration=phpunit.xml",
 		"release": [
 			"composer install --no-dev --prefer-dist --optimize-autoloader"

@@ -8,7 +8,11 @@
  * @return {WPElement} Element to render.
  */
 
+/**
+ * WordPress dependencies
+ */
 import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
+
 export default function Save() {
 	const blockProps = useBlockProps.save();
 	return (

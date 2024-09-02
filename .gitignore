@@ -1,4 +1,6 @@
 .idea/
 vendor/
 tests/wordpress/
+node_modules/
+build/
 .phpunit.result.cache

@@ -1,3 +1,6 @@
+/**
+ * WordPress dependencies
+ */
 import { useSelect } from '@wordpress/data';
 import { useBlockEditContext } from '@wordpress/block-editor';
 

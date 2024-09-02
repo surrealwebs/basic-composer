@@ -18,6 +18,10 @@ import {
 	InspectorControls,
 	RichText,
 } from '@wordpress/block-editor';
+
+/**
+ * Internal dependencies
+ */
 import { useHasSelectedInnerBlock } from '../../utilis';
 
 const ALLOWED_RICH_TEXT_FORMATS = [ 'core/bold', 'core/italic', 'core/superscript', 'core/subscript' ];
