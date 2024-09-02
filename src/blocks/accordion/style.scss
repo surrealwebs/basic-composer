@@ -1,0 +1,40 @@
+/**
+ * Block type frontend style definition.
+ * It will be enqueued both in the editor and when viewing the content on the front of the site.
+ */
+
+
+/* Block */
+.c-block-accordion-wrapper {
+	display: block;
+
+	.c-block-accordion__header {
+		margin: 0;
+		padding: 24px 32px 20px;
+		border-bottom: 1px solid var(--wp--custom--neutral--lighter);
+
+		@media only screen and (max-width: 600px) {
+			padding: 16px;
+		}
+
+		.c-block-accordion__title {
+			margin: 0;
+			padding: 0 0 2px 0;
+			font-style: normal;
+			font-weight: 700;
+			font-size: 20px;
+			line-height: 28px;
+		}
+	}
+
+	.c-block-accordion-list {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		flex: 1;
+	}
+
+	&.c-block-accordion-has-border {
+		border: 8px solid var(--wp--custom--color--neutral--lightest);
+	}
+}

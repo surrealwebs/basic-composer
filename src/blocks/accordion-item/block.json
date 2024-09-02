@@ -1,0 +1,53 @@
+{
+	"$schema": "https://json.schemastore.org/block.json",
+	"apiVersion": 2,
+	"version": "1.0.0",
+	"name": "surrealwebs-composer-blocks/accordion-item",
+	"title": "Single Accordion item",
+	"parent": [ "surrealwebs-composer-blocks/accordion" ],
+	"category": "surrealwebs-composer-blocks",
+	"icon": "list-view",
+	"description": "This is a general Accordion item",
+	"keywords": [
+		"accordion",
+		"accordion item",
+		"accordion content"
+	],
+	"textdomain": "basic-composer",
+	"supports": {
+		"customClassName": true,
+		"html": false,
+		"anchor": true
+	},
+	"attributes": {
+		"title": {
+			"type": "string",
+			"default": ""
+		},
+		"subTitle": {
+			"type": "string",
+			"default": ""
+		},
+		"isActive": {
+			"type": "boolean",
+			"default": false
+		},
+		"id": {
+			"type":"integer",
+			"default": 0
+		}
+	},
+	"example": {
+		"attributes":
+			{
+					"title": "First item",
+					"isActive": false,
+					"id": 0
+			}
+
+	},
+	"usesContext": ["surrealwebs-composer-blocks/accordion/openFirstItem"],
+	"editorScript": "file:editor.js",
+	"editorStyle": "file:editor.css",
+	"style": "file:style-editor.css"
+}

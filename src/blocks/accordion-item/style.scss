@@ -1,0 +1,132 @@
+/**
+ * Block type frontend style definition.
+ * It will be enqueued both in the editor and when viewing the content on the front of the site.
+ */
+
+.c-block-accordion-item {
+
+	$this: &;
+
+	margin-bottom: 0 !important;
+	transition-property: height, padding, margin, background-color;
+	transition-duration: 0s;
+	transition-timing-function: ease;
+
+	&:first-child {
+		#{$this}__header {
+			border-top: 1px solid var(--wp--custom--color--neutral--lighter);
+		}
+	}
+
+	&__header {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		padding: 20px 80px 16px 32px;
+		cursor: pointer;
+		border-bottom: 1px solid var(--wp--custom--color--neutral--lighter);
+		border-top: 1px solid var(--wp--preset--color--white);
+
+		@media only screen and (max-width: 600px) {
+			padding: 16px 32px 16px 16px;
+		}
+	}
+
+	&__title {
+		font-weight: bold;
+		text-transform: uppercase;
+		color: var(--wp--preset--color--blue);
+		transition: 0.3s color ease;
+		padding-bottom: 4px;
+	}
+
+	&__sub-title {
+		margin: 0;
+		transition: 0.3s color ease;
+		padding: var(--wp--custom--spacing--xxs) 0;
+
+		&:empty {
+			display: none;
+		}
+	}
+
+	&__arrow {
+		position: absolute;
+		display: inline-block;
+		margin: 0;
+		right: 26px;
+		left: auto;
+		color: var(--wp--preset--color--blue);
+		transition: 0.3s transform ease;
+		transform: rotate(0deg);
+	}
+
+	&__content {
+		display: none;
+		padding: 16px 32px;
+		margin-bottom: 0;
+		overflow: hidden;
+		transition-property: margin, height;
+		transition-duration: 0.1s;
+		transition-timing-function: ease;
+		box-sizing: border-box;
+
+		p {
+			margin: 0;
+			padding: 8px 0 8px 0;
+		}
+
+		ul,
+		li {
+			text-indent: initial;
+		}
+
+		@media only screen and (max-width: 600px) {
+			padding: 16px;
+		}
+
+		&--active {
+			display: block;
+			border-bottom: 1px solid var(--wp--custom--color--neutral--lighter);
+		}
+
+		> :last-child .wp-block-button__link,
+		> :last-child {
+			margin-bottom: 0;
+		}
+
+		.wp-block-button__link {
+			margin-bottom: 0;
+		}
+	}
+
+	&--opened {
+		#{$this}__content {
+			display: block;
+		}
+
+		/* stylelint-disable-next-line */
+		#{$this}:not(&) #{$this}__header {
+			background-color: var(--wp--custom--color--ui--blue--lightest);
+			transition: 0.3s background-color ease-in-out;
+		}
+
+		#{$this}__title, #{$this}__sub-title {
+			color: var(--wp--preset--color--black);
+		}
+
+		#{$this}__arrow {
+			color: var(--wp--preset--color--black);
+			transform: rotate(180deg);
+		}
+	}
+
+	&--active {
+		padding: 0;
+
+		#{$this}__header {
+			border-bottom: none;
+		}
+	}
+}

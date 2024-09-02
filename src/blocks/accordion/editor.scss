@@ -1,0 +1,51 @@
+/**
+ * Block type editor style definition.
+ * It will only be enqueued in the context of the editor.
+ */
+
+.accordion-wrapper {
+	position: relative;
+	display: block;
+}
+
+.accordion-list {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+
+	&--has-border {
+		border: 8px solid var(--wp--custom--color--neutral--lightest);
+	}
+
+	.accordion-list__header {
+		margin: 0;
+		padding: 24px 32px 20px;
+		border-bottom: 1px solid var(--wp--custom--neutral--lighter);
+
+		@media only screen and (max-width: 600px) {
+			padding: 16px;
+		}
+
+		.accordion-list__title {
+			margin: 0;
+			padding: 0 0 2px 0;
+			font-weight: 700;
+			font-size: 20px;
+			line-height: 28px;
+		}
+	}
+}
+
+.accordion-list .c-block-accordion-item--active {
+	padding-bottom: 0 !important;
+	border-bottom: none;
+}
+
+.accordion__button {
+	display: flex;
+	align-items: flex-start;
+	margin-top: 15px;
+	padding: 10px;
+	border: none;
+	background: transparent;
+}
