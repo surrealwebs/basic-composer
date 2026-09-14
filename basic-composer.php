@@ -10,6 +10,9 @@
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain: basic-composer
  * Domain Path: /languages
+ * Requires at least: 6.2
+ * Tested up to: 7.1
+ * Requires PHP: 8.3
  *
  * @package Surrealwebs\BasicComposer
  */
@@ -32,17 +35,23 @@ $autoload->add( __NAMESPACE__, sprintf( '%s/src/app', __DIR__ ) );
 function get_plugin_instance(): Plugin {
 	static $basic_composer_plugin;
 
+	setup_plugin_instance();
+
+	return $basic_composer_plugin;
+}
+
+function setup_plugin_instance(): void {
+	static $basic_composer_plugin;
+
 	if ( is_null( $basic_composer_plugin ) ) {
 		$basic_composer_plugin = new Plugin( __FILE__ );
 		$basic_composer_plugin->init();
 	}
-
-	return $basic_composer_plugin;
 }
 
 // Start the plugin.
 \add_action(
 	'after_setup_theme',
-	__NAMESPACE__ . '\\get_plugin_instance',
+	__NAMESPACE__ . '\\setup_plugin_instance',
 	PHP_INT_MAX
 );

@@ -2,6 +2,6 @@
 	"core": "./tools/wordpress",
 	"plugins": [
 		".",
-		"https://downloads.wordpress.org/plugin/query-monitor.3.9.0.zip"
+		"https://downloads.wordpress.org/plugin/query-monitor.4.0.7.zip"
 	]
 }

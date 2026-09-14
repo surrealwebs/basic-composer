@@ -5,6 +5,9 @@
 	<arg name="parallel" value="16" />
 	<arg value="sp" />
 
+	<!-- Make sure testing against desired PHP version. -->
+	<config name="testVersion" value="8.4-8.5"/>
+
 	<!-- Lint all PHP files in this directory by default. -->
 	<file>.</file>
 
